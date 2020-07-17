@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<display-name></display-name>
+	
+	<servlet>
+		<servlet-name>GatherDataServlet</servlet-name>
+		<servlet-class>com.chrome.servlet.GatherDataServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GatherDataServlet</servlet-name>
+		<url-pattern>/gatherData</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ResDataServlet</servlet-name>
+		<servlet-class>com.chrome.servlet.ResDataServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ResDataServlet</servlet-name>
+		<url-pattern>/resData</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>WriteLinkServlet</servlet-name>
+		<servlet-class>com.chrome.servlet.WriteLinkServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WriteLinkServlet</servlet-name>
+		<url-pattern>/writeLink</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ReadLinkServlet</servlet-name>
+		<servlet-class>com.chrome.servlet.ReadLinkServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReadLinkServlet</servlet-name>
+		<url-pattern>/readLink</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>TeamDataServlet</servlet-name>
+		<servlet-class>com.chrome.servlet.TeamDataServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TeamDataServlet</servlet-name>
+		<url-pattern>/teamData</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RefreshDataServlet</servlet-name>
+		<servlet-class>com.chrome.servlet.RefreshDataServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RefreshDataServlet</servlet-name>
+		<url-pattern>/refreshData</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>WritePriceServlet</servlet-name>
+		<servlet-class>com.chrome.servlet.WritePriceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WritePriceServlet</servlet-name>
+		<url-pattern>/writePrice</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
+
