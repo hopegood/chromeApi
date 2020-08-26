@@ -1,6 +1,9 @@
 /*   */ package com.chrome.utils;
 /*   */ 
-/*   */ import com.sun.jna.platform.win32.User32;
+/*   */ import java.io.File;
+import java.util.Iterator;
+
+import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef;
 /*   */ import com.sun.jna.platform.win32.WinDef.HWND;
 /*   */ 
@@ -156,7 +159,39 @@ import com.sun.jna.platform.win32.WinDef;
 /* 153 */         User32.INSTANCE.SetForegroundWindow(hwnd3);
 /* 154 */         return;
 /*   */       }
-/* 156 */     } else if (code.contains("bb")) {
+/* 156 */     }else if(code.contains("Ext365===")){
+	               System.out.println("code=" + code);
+    String s = "360极速浏览器 11.0";
+    final WinDef.HWND findWindow;
+    final boolean setForegroundWindow;
+    String windowTitle = new StringBuilder(code.replaceAll("Ext365===", "")).append("===365Ext").append(" - ").append(s).toString();
+    final WinDef.HWND findWindow2 = User32.INSTANCE.FindWindow((String)null,windowTitle);
+    if (findWindow2 != null){
+    	User32.INSTANCE.SetForegroundWindow(findWindow2);
+    	return;
+    
+    	
+    }
+   /* while (iterator.hasNext()) {
+        final File file = iterator2.next();
+        try {
+            
+            String windowTitle = new StringBuilder(file.getName().replaceAll("Ext365===", "").replaceAll(".html", "")).append("===365Ext").append(" - ").append(s).toString();
+            final WinDef.HWND findWindow2 = User32.INSTANCE.FindWindow((String)null,windowTitle);
+            if (findWindow2 != null && User32.INSTANCE.SetForegroundWindow(findWindow2)){
+            	break;
+            }
+            //if ((findWindow2 = User32.INSTANCE.FindWindow((String)null, String.valueOf(new StringBuilder(String.valueOf(file.getName().replaceAll("Ext365===", "").replaceAll(".html", ""))).append("===365Ext").toString()) + " - "+ s)) != null && User32.INSTANCE.SetForegroundWindow(findWindow2)) {
+            //    break;
+            //}
+        }
+        catch (Exception ex) {}
+        iterator = iterator2;
+    }*/
+}
+
+
+else if (code.contains("bb")) {
 /* 157 */       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "NewBB\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
 /* 158 */       User32.INSTANCE.SetForegroundWindow(hwnd);
 /* 159 */     } else if (code.contains("sb")) {
