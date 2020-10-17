@@ -192,7 +192,7 @@ import com.sun.jna.platform.win32.WinDef;
 
 
 else if (code.contains("bb")) {
-/* 157 */       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "NewBB\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
+/* 157 */       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "NewBB==上半场1 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
 /* 158 */       User32.INSTANCE.SetForegroundWindow(hwnd);
 /* 159 */     } else if (code.contains("sb")) {
 /* 160 */       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "\u6C99\u5DF4\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
