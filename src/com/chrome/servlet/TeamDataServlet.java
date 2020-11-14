@@ -11,6 +11,8 @@
 /*    */ import javax.servlet.http.HttpServlet;
 /*    */ import javax.servlet.http.HttpServletRequest;
 /*    */ import javax.servlet.http.HttpServletResponse;
+
+import com.chrome.utils.FileUtils;
 /*    */ 
 /*    */ public class TeamDataServlet extends HttpServlet
 /*    */ {
@@ -26,12 +28,13 @@
 /*    */   {
 /* 27 */     String name = getUTF8Value(req, "name");
 /* 28 */     String data = getUTF8Value(req, "data");
-/* 29 */     writeFile(name, data);
+/* 29 */     FileUtils.writeFile("common",name, data);
 /* 30 */     response(resp, "success");
 /*    */   }
 /*    */ 
 /*    */   public static void writeFile(String name, String content) {
 /*    */     try {
+	           //String path = System.getProperty("catalina.home");
 /* 35 */       File file = new File("c:/temp/" + name + ".html");
 /* 36 */       if (file.exists()) {
 /* 37 */         file.delete();
