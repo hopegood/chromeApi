@@ -160,7 +160,7 @@ import com.sun.jna.platform.win32.WinDef;
 /* 154 */         return;
 /*   */       }
 /* 156 */     }else if(code.contains("Ext365===")){
-	               System.out.println("code=" + code);
+	              // System.out.println("code=" + code);
     String s = "360极速浏览器 11.0";
     final WinDef.HWND findWindow;
     final boolean setForegroundWindow;
@@ -188,6 +188,19 @@ import com.sun.jna.platform.win32.WinDef;
         catch (Exception ex) {}
         iterator = iterator2;
     }*/
+}else if (code.contains("Ext365===") && code.contains("_share")) {
+ 
+String s = "360极速浏览器 11.0";
+final WinDef.HWND findWindow;
+final boolean setForegroundWindow;
+String windowTitle = new StringBuilder(code.replaceAll("Ext365===", "").replaceAll("_share","")).append("===365Share").append(" - ").append(s).toString();
+final WinDef.HWND findWindow2 = User32.INSTANCE.FindWindow((String)null,windowTitle);
+if (findWindow2 != null){
+User32.INSTANCE.SetForegroundWindow(findWindow2);
+return;
+
+
+}
 }
 
 
