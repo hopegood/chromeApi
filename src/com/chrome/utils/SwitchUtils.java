@@ -1,11 +1,14 @@
 /*   */ package com.chrome.utils;
-/*   */ 
-/*   */ import java.io.File;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.sun.jna.Native;
+import com.sun.jna.Pointer;
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef;
 /*   */ import com.sun.jna.platform.win32.WinDef.HWND;
+import com.sun.jna.platform.win32.WinUser.WNDENUMPROC;
+
 /*   */ 
 /*   */ public class SwitchUtils
 /*   */ {
@@ -205,36 +208,101 @@ import com.sun.jna.platform.win32.WinDef;
 
 
 else if (code.contains("bb")) {
-/* 157 */       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "NewBB==上半场1 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
-/* 158 */       User32.INSTANCE.SetForegroundWindow(hwnd);
-/* 159 */     } else if (code.contains("sb")) {
-/* 160 */       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "\u6C99\u5DF4\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
-/* 161 */       User32.INSTANCE.SetForegroundWindow(hwnd);
-/* 162 */     } else if (code.contains("pb")) {
-/* 163 */       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "\u5E73\u535A\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
-/* 164 */       User32.INSTANCE.SetForegroundWindow(hwnd);
-/* 165 */     } else if (code.contains("l88")) {
-/* 166 */       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "188\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
-/* 167 */       User32.INSTANCE.SetForegroundWindow(hwnd);
-/* 168 */     } else if (code.contains("df")) {
-/* 169 */       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "\u5927\u53D1\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
-/* 170 */       User32.INSTANCE.SetForegroundWindow(hwnd);
-/* 171 */     } else if (code.contains("bti")) {
-/* 172 */       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "BTI\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
-/* 173 */       User32.INSTANCE.SetForegroundWindow(hwnd);
-/* 174 */     } else if (code.contains("boin")) {
-/* 175 */       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "BBIN\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
-/* 176 */       User32.INSTANCE.SetForegroundWindow(hwnd);
-/*   */       } else if (code.contains("hg")) {
+	   WinDef.HWND hwnd = SwitchUtils.findWindow("NewBB==上半场");
+	   if (hwnd != null) User32.INSTANCE.SetForegroundWindow(hwnd);
+	   else {
+		  hwnd = SwitchUtils.findWindow("NewBB==全场"); 
+		  if (hwnd != null) User32.INSTANCE.SetForegroundWindow(hwnd);
+	   }
+     } else if (code.contains("sb")) {
+       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "\u6C99\u5DF4\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
+       User32.INSTANCE.SetForegroundWindow(hwnd);
+     } else if (code.contains("pb")) {
+       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "\u5E73\u535A\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
+       User32.INSTANCE.SetForegroundWindow(hwnd);
+     } else if (code.contains("l88")) {
+       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "188\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
+       User32.INSTANCE.SetForegroundWindow(hwnd);
+     } else if (code.contains("df")) {
+       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "\u5927\u53D1\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
+       User32.INSTANCE.SetForegroundWindow(hwnd);
+     } else if (code.contains("bti")) {
+       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "BTI\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
+       User32.INSTANCE.SetForegroundWindow(hwnd);
+     } else if (code.contains("boin")) {
+       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "BBIN\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
+       User32.INSTANCE.SetForegroundWindow(hwnd);
+       } else if (code.contains("hg")) {
 	            WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "皇冠体育 - 360极速浏览器 11.0");
 	            System.out.println("hg-hwnd=" + hwnd);
 	            User32.INSTANCE.SetForegroundWindow(hwnd);
 	          
 }
-/*   */   }
-/*   */ }
+   }
 
-/* Location:           F:\goodwork\gold\test_exec_path\webapps\chromeApi\WEB-INF\classes\
- * Qualified Name:     com.chrome.utils.SwitchUtils
- * JD-Core Version:    0.6.0
- */
+       private static WinDef.HWND findWindow(final String partialTitle){
+    	   final User32 user32 = User32.INSTANCE;
+    	   //final String windownTitle = "向日葵远程控制";
+    	   final List<WinDef.HWND> hwndList = new ArrayList<WinDef.HWND>();
+    	   user32.EnumWindows(new WNDENUMPROC() {
+    	         @Override
+    	         public boolean callback(HWND hWnd, Pointer arg1) {
+    	            char[] windowText = new char[512];
+    	            user32.GetWindowText(hWnd, windowText, 512);
+    	            String wText = Native.toString(windowText);
+    	            if (!wText.isEmpty()) {
+    	            	if (wText.contains(partialTitle)) {
+    	            		hwndList.add(hWnd);
+    	            		return false;
+    	            	}
+    	               return true;
+    	            }
+    	            return true;
+    	         };
+    	      }, null);   
+    	   if (hwndList.size() == 1) return hwndList.get(0);
+    	   return null;
+    	   
+       }
+       
+       public static void main(String[] args) {
+    	   final User32 user32 = User32.INSTANCE;
+    	   final String windownTitle = "向日葵远程控制";
+    	   final List<WinDef.HWND> hwndList = new ArrayList<WinDef.HWND>();
+    	   user32.EnumWindows(new WNDENUMPROC() {
+    		     int count;
+    	         
+    	         @Override
+    	         public boolean callback(HWND hWnd, Pointer arg1) {
+    	            char[] windowText = new char[512];
+    	            user32.GetWindowText(hWnd, windowText, 512);
+    	            String wText = Native.toString(windowText);
+
+    	            // get rid of this if block if you want all windows regardless of whether
+    	            // or not they have text
+    	            if (!wText.isEmpty()) {
+    	            	if (wText.contains(windownTitle)) {
+    	            		//okHWND = hWnd;
+    	            		hwndList.add(hWnd);
+    	            		//count++;
+    	            		//System.out.println("count=" + count);
+    	            		//break;
+    	            		return false;
+    	            	}
+    	               //System.out.println(wText);
+    	            	count++;
+    	               System.out.println("count=" + count);
+    	               return true;
+    	            }
+
+    	            
+    	            return true;
+    	         };
+    	         //System.out.println("count=" + count);
+    	      }, null);   	
+    	   System.out.println(hwndList.size());
+    	   
+    	   
+       }
+ }
+
