@@ -168,8 +168,10 @@ import com.sun.jna.platform.win32.WinUser.WNDENUMPROC;
 	final WinDef.HWND findWindow;
 	final boolean setForegroundWindow;
 	String windowTitle = new StringBuilder(code.replaceAll("Ext365===", "").replaceAll("_share","")).append("===365Share").append(" - ").append(s).toString();
+	//System.out.println("windowTitle=" + windowTitle);
 	final WinDef.HWND findWindow2 = User32.INSTANCE.FindWindow((String)null,windowTitle);
 	if (findWindow2 != null){
+		//System.out.println("windowTitle=" + "foudned");
 	User32.INSTANCE.SetForegroundWindow(findWindow2);
 	return;
 
@@ -213,6 +215,10 @@ else if (code.contains("bb")) {
 	   else {
 		  hwnd = SwitchUtils.findWindow("NewBB==全场"); 
 		  if (hwnd != null) User32.INSTANCE.SetForegroundWindow(hwnd);
+		  else {
+			  hwnd = SwitchUtils.findWindow("NewBB体育");
+			  if (hwnd != null) User32.INSTANCE.SetForegroundWindow(hwnd);
+		  }
 	   }
      } else if (code.contains("sb")) {
        WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "\u6C99\u5DF4\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
