@@ -14,7 +14,6 @@ import com.sun.jna.platform.win32.WinUser.WNDENUMPROC;
 /*   */ {
 /*   */   public static synchronized void switchTo(String code)
 /*   */   {
-	        System.out.println("code=" + code);
 /* 9 */     if (code.equals("ysb")) {
 /* 10 */       WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "\u6613\u80DC\u535A\u4F53\u80B2 - 360\u6781\u901F\u6D4F\u89C8\u5668 11.0");
 /* 11 */       User32.INSTANCE.SetForegroundWindow(hwnd);
@@ -168,7 +167,6 @@ import com.sun.jna.platform.win32.WinUser.WNDENUMPROC;
 	final WinDef.HWND findWindow;
 	final boolean setForegroundWindow;
 	String windowTitle = new StringBuilder(code.replaceAll("Ext365===", "").replaceAll("_share","")).append("===365Share").append(" - ").append(s).toString();
-	//System.out.println("windowTitle=" + windowTitle);
 	final WinDef.HWND findWindow2 = User32.INSTANCE.FindWindow((String)null,windowTitle);
 	if (findWindow2 != null){
 		//System.out.println("windowTitle=" + "foudned");
@@ -240,9 +238,12 @@ else if (code.contains("bb")) {
        User32.INSTANCE.SetForegroundWindow(hwnd);
        } else if (code.contains("hg")) {
 	            WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "皇冠体育 - 360极速浏览器 11.0");
-	            System.out.println("hg-hwnd=" + hwnd);
 	            User32.INSTANCE.SetForegroundWindow(hwnd);
 	          
+}else if (code.contains("lj")) {
+    WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, "利记体育 - 360极速浏览器 11.0");
+    User32.INSTANCE.SetForegroundWindow(hwnd);
+	
 }
    }
 
@@ -297,7 +298,6 @@ else if (code.contains("bb")) {
     	            	}
     	               //System.out.println(wText);
     	            	count++;
-    	               System.out.println("count=" + count);
     	               return true;
     	            }
 
