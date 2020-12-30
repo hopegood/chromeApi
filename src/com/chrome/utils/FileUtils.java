@@ -122,7 +122,6 @@
 /* 120 */       if (StringUtils.isNullOrEmpty(path)) {
 /* 121 */         path = GlobalConstants.APP_PATH;
 /*     */       }
-                //System.out.println("teamdata.path=" + path);
 /* 123 */       File file = new File(path + "/" + account + "/" + name + ".html");
 /* 124 */       if (file.exists()) {
 /* 125 */         file.delete();
