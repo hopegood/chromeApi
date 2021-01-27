@@ -73,6 +73,7 @@
 /*  71 */         return "";
 /*     */       }
 /*  73 */       String rst = readToString(file);
+                if (rst.length() == 0) return "";
 /*  74 */       file.delete();
 /*  75 */       return rst; } catch (Exception e) {
 /*     */     }
