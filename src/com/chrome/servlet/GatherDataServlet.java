@@ -1,6 +1,8 @@
 /*    */ package com.chrome.servlet;
 /*    */ 
 /*    */ import com.chrome.utils.FileUtils;
+
+import java.io.BufferedReader;
 /*    */ import java.io.IOException;
 /*    */ import java.io.PrintWriter;
 /*    */ import java.io.UnsupportedEncodingException;
@@ -22,12 +24,60 @@
 /*    */ 
 /*    */   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 /*    */   {
-/* 25 */     String name = getUTF8Value(req, "name");
-/* 26 */     String data = getUTF8Value(req, "data");
+	   try{
+		   String name = req.getParameter("name");
+		   String data = "";
+		   //System.out.println("name1=" + name);
+		   if (name == null) {
+	            StringBuilder sb = new StringBuilder();
+	            try  {
+	            	BufferedReader reader = req.getReader();
+	                char[] buff = new char[1024*1024];
+	                int len;
+	                while ((len = reader.read(buff)) != -1) {
+	                    sb.append(buff, 0, len);
+	                }
+		            name = this.splitString(sb.toString(), "name=");
+		            name = URLDecoder.decode(name,"UTF-8");
+		            data = this.splitString(sb.toString(), "data=");
+		            data = URLDecoder.decode(data,"UTF-8");
+		            data = URLDecoder.decode(data,"UTF-8");
+	            } catch (IOException e) {
+	                //e.printStackTrace();
+	            }
+	            //System.out.println("sb=" + sb.toString());
+	        }else {
+	        	name = getUTF8Value(req, "name");
+	        	data = getUTF8Value(req, "data");
+	        }
+		   
+		   
+		   
+		   //System.out.println("name=" + name);
+/* 25 */     //String name = getUTF8Value(req, "name");
+/* 26 */     //String data = getUTF8Value(req, "data");
+//System.out.println("name=" + name);
 /* 27 */     FileUtils.writeFile("common", name, data);
 /* 28 */     response(resp, "success");
+	   }catch(Exception e){
+		   e.printStackTrace();
+	   }
 /*    */   }
 /*    */ 
+private String splitString(String str, String temp) {
+    String result = null;
+    if (str.indexOf(temp) != -1) {
+        if (str.substring(str.indexOf(temp)).indexOf("&") != -1) {
+            result = str.substring(str.indexOf(temp)).substring(str.substring(str.indexOf(temp)).indexOf("=") + 1,
+                    str.substring(str.indexOf(temp)).indexOf("&"));
+
+        } else {
+            result = str.substring(str.indexOf(temp)).substring(str.substring(str.indexOf(temp)).indexOf("=") + 1);
+
+        }
+    }
+    return result;
+}
 /*    */   protected String getUTF8Value(HttpServletRequest req, String parameter)
 /*    */   {
 /* 39 */     String value = req.getParameter(parameter);

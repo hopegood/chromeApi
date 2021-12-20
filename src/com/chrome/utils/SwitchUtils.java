@@ -80,7 +80,7 @@ import com.sun.jna.platform.win32.WinUser.WNDENUMPROC;
 /* 69 */     } else if (code.contains("bet3651")) {
 /* 70 */       WinDef.HWND hwnd = findWindowGoogleOr360("bet3651 - \u5728\u7EBF\u4F53\u80B2\u6295\u6CE8");
 /* 71 */       User32.INSTANCE.SetForegroundWindow(hwnd);
-/* 72 */     } else if (code.contains("bet365x1")) {
+/* 72 */     } else if (code.contains("bet365x1") || "tennis365x1".equals(code)) {
 /* 73 */       WinDef.HWND hwnd1 = findWindowGoogleOr360("365x1");
 /* 74 */       if (hwnd1 != null) {
 /* 75 */         User32.INSTANCE.SetForegroundWindow(hwnd1);
@@ -101,7 +101,7 @@ import com.sun.jna.platform.win32.WinUser.WNDENUMPROC;
 /* 90 */         User32.INSTANCE.SetForegroundWindow(hwnd4);
 /* 91 */         return;
 /*   */       }
-/* 93 */     } else if (code.contains("bet365x2")) {
+/* 93 */     } else if (code.contains("bet365x2") || "tennis365x2".equals(code)) {
 /* 94 */       WinDef.HWND hwnd2 = findWindowGoogleOr360("365x2");
 /* 95 */       if (hwnd2 != null) {
 /* 96 */         User32.INSTANCE.SetForegroundWindow(hwnd2);
@@ -122,7 +122,7 @@ import com.sun.jna.platform.win32.WinUser.WNDENUMPROC;
 /* 111 */         User32.INSTANCE.SetForegroundWindow(hwnd4);
 /* 112 */         return;
 /*   */       }
-/* 114 */     } else if (code.contains("bet365x3")) {
+/* 114 */     } else if (code.contains("bet365x3") || "tennis365x3".equals(code) ) {
 /* 115 */       WinDef.HWND hwnd3 = findWindowGoogleOr360("365x3");
 /* 116 */       if (hwnd3 != null) {
 /* 117 */         User32.INSTANCE.SetForegroundWindow(hwnd3);

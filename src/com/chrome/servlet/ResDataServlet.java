@@ -23,6 +23,7 @@
 /*    */ 
 /*    */   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 /*    */   {
+	         try{
 /* 29 */     String name = getUTF8Value(req, "name");
 /* 30 */     Integer isPrice = Integer.valueOf(Integer.parseInt(req.getParameter("isPrice")));
 /* 31 */     String data = FileUtils.readFile("common", name);
@@ -38,7 +39,9 @@
 /* 41 */         data = FileUtils.readRefreshFile("common", name);
 /* 42 */         response(resp, data);
 /*    */       }
-/*    */     }
+/*    */     }}catch(Exception e){
+	            e.printStackTrace();
+}
 /*    */   }
 /*    */ 
 /*    */   protected String getUTF8Value(HttpServletRequest req, String parameter)
