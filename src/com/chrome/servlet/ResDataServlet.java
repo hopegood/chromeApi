@@ -26,12 +26,16 @@
 	         try{
 /* 29 */     String name = getUTF8Value(req, "name");
 /* 30 */     Integer isPrice = Integer.valueOf(Integer.parseInt(req.getParameter("isPrice")));
+             Integer isBet = Integer.valueOf(Integer.parseInt(req.getParameter("isBet")));
 /* 31 */     String data = FileUtils.readFile("common", name);
 /* 32 */     if (!StringUtils.isNullOrEmpty(data)) {
 /* 33 */       response(resp, data);
 /*    */     } else {
 /* 35 */       if (isPrice.intValue() == 1) {
 /* 36 */         data = FileUtils.readPriceFile("common", name);
+/*    */       }
+               if (isBet.intValue() == 1) {
+/* 36 */         data = FileUtils.readBetFile("common", name);
 /*    */       }
 /* 38 */       if (!StringUtils.isNullOrEmpty(data)) {
 /* 39 */         response(resp, data);
