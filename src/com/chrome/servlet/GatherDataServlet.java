@@ -27,7 +27,6 @@ import java.io.BufferedReader;
 	   try{
 		   String name = req.getParameter("name");
 		   String data = "";
-		   //System.out.println("name1=" + name);
 		   if (name == null) {
 	            StringBuilder sb = new StringBuilder();
 	            try  {
@@ -45,7 +44,6 @@ import java.io.BufferedReader;
 	            } catch (IOException e) {
 	                //e.printStackTrace();
 	            }
-	            //System.out.println("sb=" + sb.toString());
 	        }else {
 	        	name = getUTF8Value(req, "name");
 	        	data = getUTF8Value(req, "data");
@@ -53,10 +51,6 @@ import java.io.BufferedReader;
 		   
 		   
 		   
-		   //System.out.println("name=" + name);
-/* 25 */     //String name = getUTF8Value(req, "name");
-/* 26 */     //String data = getUTF8Value(req, "data");
-//System.out.println("name=" + name);
 /* 27 */     FileUtils.writeFile("common", name, data);
 /* 28 */     response(resp, "success");
 	   }catch(Exception e){

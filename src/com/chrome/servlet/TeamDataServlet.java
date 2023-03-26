@@ -34,7 +34,6 @@ import com.chrome.utils.FileUtils;
 /*    */ 
 /*    */   public static void writeFile(String name, String content) {
 /*    */     try {
-	           //String path = System.getProperty("catalina.home");
 /* 35 */       File file = new File("c:/temp/" + name + ".html");
 /* 36 */       if (file.exists()) {
 /* 37 */         file.delete();

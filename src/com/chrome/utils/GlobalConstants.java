@@ -22,7 +22,6 @@
 /*    */ 
 /*    */   public static void main(String[] args)
 /*    */   {
-/* 16 */     System.out.println(APP_PATH);
 /*    */   }
 /*    */ 
 /*    */   private static void init()

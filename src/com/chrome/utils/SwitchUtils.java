@@ -177,7 +177,6 @@ import com.sun.jna.platform.win32.WinUser.WNDENUMPROC;
 
 	}
 	}else if(code.contains("Ext365===")){
-	              // System.out.println("code=" + code);
     final WinDef.HWND findWindow;
     final boolean setForegroundWindow;
     String windowTitle = new StringBuilder(code.replaceAll("Ext365===", "")).append("===365Ext").toString();
@@ -235,9 +234,7 @@ else if (code.contains("bb")) {
 
        private static WinDef.HWND findWindowGoogleOr360(final String  title){
     	   final String  title1 = title.concat(" - ").concat(BROWSER_360);
-    	   System.out.println("title1=" + title1);
     	   WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, title1);
-    	   if (hwnd != null) System.out.println("title1=" + title + " is founded");
     	   if (hwnd == null) hwnd = User32.INSTANCE.FindWindow(null, title.concat(" - ").concat(BROWSER_GOOGLE));
     	   return hwnd;
        }
@@ -285,12 +282,8 @@ else if (code.contains("bb")) {
     	            	if (wText.contains(windownTitle)) {
     	            		//okHWND = hWnd;
     	            		hwndList.add(hWnd);
-    	            		//count++;
-    	            		//System.out.println("count=" + count);
-    	            		//break;
     	            		return false;
     	            	}
-    	               //System.out.println(wText);
     	            	count++;
     	               return true;
     	            }
@@ -298,9 +291,7 @@ else if (code.contains("bb")) {
     	            
     	            return true;
     	         };
-    	         //System.out.println("count=" + count);
     	      }, null);   	
-    	   System.out.println(hwndList.size());
     	   
     	   
        }
