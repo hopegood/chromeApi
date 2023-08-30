@@ -1,16 +1,19 @@
 /*     */ package com.chrome.servlet;
 /*     */ 
-/*     */ import com.chrome.utils.StringUtils;
-/*     */ import com.chrome.utils.SwitchUtils;
-/*     */ import java.awt.Robot;
-/*     */ import java.io.IOException;
-/*     */ import java.io.PrintWriter;
-/*     */ import java.io.UnsupportedEncodingException;
-/*     */ import java.net.URLDecoder;
-/*     */ import javax.servlet.ServletException;
-/*     */ import javax.servlet.http.HttpServlet;
-/*     */ import javax.servlet.http.HttpServletRequest;
-/*     */ import javax.servlet.http.HttpServletResponse;
+/*     */
+
+import com.chrome.utils.StringUtils;
+import com.chrome.utils.SwitchUtils;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 /*     */ 
 /*     */ public class WritePriceServlet extends HttpServlet
 /*     */ {

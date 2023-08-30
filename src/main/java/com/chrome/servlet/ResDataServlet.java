@@ -1,15 +1,18 @@
 /*    */ package com.chrome.servlet;
 /*    */ 
-/*    */ import com.chrome.utils.FileUtils;
-/*    */ import com.chrome.utils.StringUtils;
-/*    */ import java.io.IOException;
-/*    */ import java.io.PrintWriter;
-/*    */ import java.io.UnsupportedEncodingException;
-/*    */ import java.net.URLDecoder;
-/*    */ import javax.servlet.ServletException;
-/*    */ import javax.servlet.http.HttpServlet;
-/*    */ import javax.servlet.http.HttpServletRequest;
-/*    */ import javax.servlet.http.HttpServletResponse;
+/*    */
+
+import com.chrome.utils.FileUtils;
+import com.chrome.utils.StringUtils;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 /*    */ 
 /*    */ public class ResDataServlet extends HttpServlet
 /*    */ {
@@ -33,8 +36,7 @@
 /*    */     } else {
 /* 35 */       if (isPrice.intValue() == 1) {
 /* 36 */         data = FileUtils.readPriceFile("common", name);
-/*    */       }
-               if (isBet.intValue() == 1) {
+/*    */       }else if (isBet.intValue() == 1) {
 /* 36 */         data = FileUtils.readBetFile("common", name);
 /*    */       }
 /* 38 */       if (!StringUtils.isNullOrEmpty(data)) {

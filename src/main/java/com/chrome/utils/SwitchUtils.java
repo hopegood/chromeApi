@@ -1,13 +1,14 @@
 /*   */ package com.chrome.utils;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.sun.jna.Native;
 import com.sun.jna.Pointer;
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef;
-/*   */ import com.sun.jna.platform.win32.WinDef.HWND;
+import com.sun.jna.platform.win32.WinDef.HWND;
 import com.sun.jna.platform.win32.WinUser.WNDENUMPROC;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /*   */ 
 /*   */ public class SwitchUtils
@@ -205,7 +206,11 @@ else if (code.contains("bb")) {
      } else if (code.contains("sb")) {
        WinDef.HWND hwnd = findWindowGoogleOr360("\u6C99\u5DF4\u4F53\u80B2");
        User32.INSTANCE.SetForegroundWindow(hwnd);
-     } else if (code.contains("pb")) {
+     }else if (code.contains("ob")) {
+	System.out.println("查找ob窗體!");
+		WinDef.HWND hwnd = findWindowGoogleOr360("\u6b27\u5df4\u4f53\u80b2");
+		User32.INSTANCE.SetForegroundWindow(hwnd);
+	} else if (code.contains("pb")) {
     	 //平博体育 - 360极速浏览器 11.0
        WinDef.HWND hwnd = findWindowGoogleOr360("\u5E73\u535A\u4F53\u80B2");
        User32.INSTANCE.SetForegroundWindow(hwnd);
@@ -233,9 +238,11 @@ else if (code.contains("bb")) {
    }
 
        private static WinDef.HWND findWindowGoogleOr360(final String  title){
+		   System.out.println("查找ob窗體,title" + title);
     	   final String  title1 = title.concat(" - ").concat(BROWSER_360);
     	   WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, title1);
     	   if (hwnd == null) hwnd = User32.INSTANCE.FindWindow(null, title.concat(" - ").concat(BROWSER_GOOGLE));
+		   if (hwnd != null) System.out.println("找到ob窗體!");
     	   return hwnd;
        }
        private static WinDef.HWND findWindow(final String partialTitle){
