@@ -1,22 +1,14 @@
 /*     */ package com.chrome.utils;
 /*     */ 
-/*     */ import java.io.BufferedWriter;
-/*     */ import java.io.File;
-/*     */ import java.io.FileInputStream;
-/*     */ import java.io.FileNotFoundException;
-/*     */ import java.io.FileOutputStream;
-/*     */ import java.io.FileWriter;
-/*     */ import java.io.IOException;
-/*     */ import java.io.OutputStreamWriter;
-/*     */ import java.io.PrintStream;
-/*     */ import java.io.UnsupportedEncodingException;
+/*     */
+
+import java.io.*;
 /*     */ 
 /*     */ public class FileUtils
 /*     */ {
 /*     */   public static void main(String[] args)
 /*     */   {
 /*  16 */     String data = readLinkFile("1");
-/*  17 */     System.out.println(data);
 /*     */   }
 /*     */ 
 /*     */   private static void initDir(String account) {
@@ -115,6 +107,23 @@
 /*     */     }
 /* 113 */     return "";
 /*     */   }
+/*     */   public static String readBetFile(String account, String name)
+/*     */   {
+/*     */     try {
+/* 101 */       String path = System.getProperty("catalina.home");
+/* 102 */       if (StringUtils.isNullOrEmpty(path)) {
+/* 103 */         path = GlobalConstants.APP_PATH;
+/*     */       }
+/* 105 */       File file = new File(path + "/" + account + "/bet_" + name + ".txt");
+/* 106 */       if (!file.exists()) {
+/* 107 */         return "";
+/*     */       }
+/* 109 */       String rst = readToString(file);
+/* 110 */       file.delete();
+/* 111 */       return rst; } catch (Exception e) {
+/*     */     }
+/* 113 */     return "";
+/*     */   }
 /*     */ 
 /*     */   public static void writeFile(String account, String name, String content)
 /*     */   {
@@ -155,7 +164,6 @@
 /*     */     try {
 /* 153 */       return new String(filecontent, encoding);
 /*     */     } catch (UnsupportedEncodingException e) {
-/* 155 */       System.err.println("The OS does not support " + encoding);
 /* 156 */       e.printStackTrace();
 /* 157 */     }return null;
 /*     */   }
@@ -180,7 +188,6 @@
 /*     */     try {
 /* 178 */       return new String(filecontent, encoding);
 /*     */     } catch (UnsupportedEncodingException e) {
-/* 180 */       System.err.println("The OS does not support " + encoding);
 /* 181 */       e.printStackTrace();
 /* 182 */     }return null;
 /*     */   }

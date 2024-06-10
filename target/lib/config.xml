@@ -1,0 +1,43 @@
+<config>
+    <input>
+        <jar in="chromeApi-1.0-SNAPSHOT.jar" out="obf-chromeApi.jar"/>
+        <!--<jar in="update8.jar" out="obf-update8.jar"/>-->
+    </input>
+
+    <classpath basedir=".">
+        <!-- Adding all jars in the lib directory to the classpath -->
+        <jar name="lib/*.jar"/>
+    </classpath>
+
+    <keep-names>
+        <class template ="class com.ab.ls.q100.LoginFrame"/>
+        <class template ="class com.ab.ls.q100.t1">
+            <method template="public get*(*)"/>
+            <method template="public set*(*)"/>
+        </class>
+        <class template ="class com.ab.ls.q100.t2">
+            <method template="public get*(*)"/>
+            <method template="public set*(*)"/>
+        </class>
+        <class template ="class com.ab.ls.q100.t3">
+            <method template="public get*(*)"/>
+            <method template="public set*(*)"/>
+        </class>
+        <class template ="class com.ab.ls.c100.k1">
+            <method template="public get*(*)"/>
+            <method template="public set*(*)"/>
+        </class>
+        <class template ="class com.ab.ls.c100.k7">
+            <method template="public get*(*)"/>
+            <method template="public set*(*)"/>
+        </class>
+        <!--<class access="protected+">
+            <field access="protected+"/>
+            <method access="protected+"/>
+        </class>-->
+    </keep-names>
+    <property name="control-flow-obfuscation" value="enable"/>
+    <property name="classes-naming" value="abc"/>
+    <property name="log-file" value="log.xml"/>
+    <property name="force-default-package" value="enable"/>
+</config>

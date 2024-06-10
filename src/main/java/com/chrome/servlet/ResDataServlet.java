@@ -1,15 +1,18 @@
 /*    */ package com.chrome.servlet;
 /*    */ 
-/*    */ import com.chrome.utils.FileUtils;
-/*    */ import com.chrome.utils.StringUtils;
-/*    */ import java.io.IOException;
-/*    */ import java.io.PrintWriter;
-/*    */ import java.io.UnsupportedEncodingException;
-/*    */ import java.net.URLDecoder;
-/*    */ import javax.servlet.ServletException;
-/*    */ import javax.servlet.http.HttpServlet;
-/*    */ import javax.servlet.http.HttpServletRequest;
-/*    */ import javax.servlet.http.HttpServletResponse;
+/*    */
+
+import com.chrome.utils.FileUtils;
+import com.chrome.utils.StringUtils;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 /*    */ 
 /*    */ public class ResDataServlet extends HttpServlet
 /*    */ {
@@ -23,14 +26,18 @@
 /*    */ 
 /*    */   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 /*    */   {
+	         try{
 /* 29 */     String name = getUTF8Value(req, "name");
 /* 30 */     Integer isPrice = Integer.valueOf(Integer.parseInt(req.getParameter("isPrice")));
+             Integer isBet = Integer.valueOf(Integer.parseInt(req.getParameter("isBet")));
 /* 31 */     String data = FileUtils.readFile("common", name);
 /* 32 */     if (!StringUtils.isNullOrEmpty(data)) {
 /* 33 */       response(resp, data);
 /*    */     } else {
 /* 35 */       if (isPrice.intValue() == 1) {
 /* 36 */         data = FileUtils.readPriceFile("common", name);
+/*    */       }else if (isBet.intValue() == 1) {
+/* 36 */         data = FileUtils.readBetFile("common", name);
 /*    */       }
 /* 38 */       if (!StringUtils.isNullOrEmpty(data)) {
 /* 39 */         response(resp, data);
@@ -38,7 +45,9 @@
 /* 41 */         data = FileUtils.readRefreshFile("common", name);
 /* 42 */         response(resp, data);
 /*    */       }
-/*    */     }
+/*    */     }}catch(Exception e){
+	            e.printStackTrace();
+}
 /*    */   }
 /*    */ 
 /*    */   protected String getUTF8Value(HttpServletRequest req, String parameter)
